@@ -1,0 +1,2369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>PhoneShop - Premium Smartphones</title>
+
+    <meta name="description" content="PhoneShop - Premium smartphones from Apple, Samsung, Google, Xiaomi and OnePlus.">
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #111827;
+            --secondary: #6b7280;
+            --accent: #2563eb;
+            --accent-dark: #1d4ed8;
+            --light: #f8fafc;
+            --border: #e5e7eb;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --radius: 18px;
+            --shadow: 0 15px 45px rgba(15, 23, 42, .08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Inter", sans-serif;
+            background: #ffffff;
+            color: var(--primary);
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        .main-navbar {
+            background: rgba(255, 255, 255, .94);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(229, 231, 235, .8);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #111827;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: #111827;
+            color: #fff;
+            border-radius: 13px;
+            margin-right: 8px;
+        }
+
+        .navbar-nav .nav-link {
+            color: #4b5563;
+            font-weight: 600;
+            padding: 10px 16px !important;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--accent);
+        }
+
+        .cart-button {
+            border: 0;
+            background: #111827;
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 13px;
+            position: relative;
+        }
+
+        .cart-button:hover {
+            background: var(--accent);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            min-width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 11px;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            background:
+                radial-gradient(circle at 80% 20%, rgba(37, 99, 235, .12), transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(99, 102, 241, .08), transparent 30%),
+                #f8fafc;
+            padding: 80px 0;
+        }
+
+        .hero-small-title {
+            color: var(--accent);
+            font-size: .85rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 18px;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 6vw, 5.8rem);
+            line-height: .98;
+            font-weight: 900;
+            letter-spacing: -4px;
+            margin-bottom: 25px;
+        }
+
+        .hero-title span {
+            color: var(--accent);
+        }
+
+        .hero-description {
+            max-width: 600px;
+            color: #6b7280;
+            font-size: 1.08rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .hero-button {
+            background: #111827;
+            color: white;
+            border-radius: 12px;
+            padding: 14px 25px;
+            font-weight: 700;
+            border: 0;
+            transition: .3s;
+        }
+
+        .hero-button:hover {
+            background: var(--accent);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .hero-secondary-button {
+            border: 1px solid #d1d5db;
+            color: #111827;
+            background: white;
+            border-radius: 12px;
+            padding: 13px 25px;
+            font-weight: 700;
+        }
+
+        .hero-secondary-button:hover {
+            border-color: #111827;
+        }
+
+        .hero-phone-area {
+            min-height: 470px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-circle {
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dbeafe, #eff6ff);
+            position: absolute;
+        }
+
+        .hero-phone {
+            position: relative;
+            z-index: 2;
+            width: 280px;
+            height: 430px;
+            object-fit: contain;
+            filter: drop-shadow(0 35px 30px rgba(15, 23, 42, .2));
+            animation: phoneFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes phoneFloat {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            z-index: 5;
+            background: rgba(255, 255, 255, .92);
+            backdrop-filter: blur(15px);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, .7);
+            padding: 15px 18px;
+            border-radius: 15px;
+        }
+
+        .hero-floating-card.card-one {
+            left: 0;
+            bottom: 80px;
+        }
+
+        .hero-floating-card.card-two {
+            right: 0;
+            top: 70px;
+        }
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+            padding: 90px 0;
+        }
+
+        .section-label {
+            color: var(--accent);
+            font-size: .8rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            font-weight: 900;
+            font-size: clamp(2rem, 4vw, 3rem);
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            color: #6b7280;
+        }
+
+        /* =========================
+           SHOP TOOLBAR
+        ========================= */
+
+        .shop-toolbar {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 35px;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 48px;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            padding: 0 18px 0 45px;
+            outline: none;
+            background: white;
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, .1);
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            border: 1px solid #d1d5db;
+            background: white;
+            color: #4b5563;
+            border-radius: 10px;
+            padding: 9px 16px;
+            font-size: .9rem;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #111827;
+            border-color: #111827;
+            color: #fff;
+        }
+
+        /* =========================
+           PRODUCT CARD
+        ========================= */
+
+        .product-card {
+            height: 100%;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            overflow: hidden;
+            transition: .3s ease;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-7px);
+            box-shadow: var(--shadow);
+            border-color: #d1d5db;
+        }
+
+        .product-image-area {
+            height: 310px;
+            background: #f8fafc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 25px;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: .35s;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.06);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #111827;
+            color: white;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: .7rem;
+            font-weight: 800;
+        }
+
+        .product-wishlist {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: white;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6b7280;
+        }
+
+        .product-wishlist:hover {
+            color: #ef4444;
+        }
+
+        .product-body {
+            padding: 22px;
+        }
+
+        .product-brand {
+            font-size: .72rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9ca3af;
+            font-weight: 800;
+            margin-bottom: 6px;
+        }
+
+        .product-name {
+            font-size: 1.05rem;
+            font-weight: 800;
+            margin-bottom: 7px;
+        }
+
+        .product-description {
+            color: #6b7280;
+            font-size: .82rem;
+            min-height: 40px;
+        }
+
+        .product-price {
+            font-size: 1.25rem;
+            font-weight: 900;
+            margin-top: 15px;
+        }
+
+        .product-old-price {
+            color: #9ca3af;
+            text-decoration: line-through;
+            font-size: .85rem;
+            margin-left: 5px;
+        }
+
+        .add-cart-btn {
+            width: 100%;
+            margin-top: 17px;
+            height: 45px;
+            border: 0;
+            border-radius: 11px;
+            background: #111827;
+            color: white;
+            font-weight: 700;
+            transition: .25s;
+        }
+
+        .add-cart-btn:hover {
+            background: var(--accent);
+        }
+
+        /* =========================
+           EMPTY STATE
+        ========================= */
+
+        .empty-state {
+            display: none;
+            padding: 70px 20px;
+            text-align: center;
+            color: #6b7280;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            color: #d1d5db;
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .feature-card {
+            padding: 28px;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            height: 100%;
+        }
+
+        .feature-icon {
+            width: 52px;
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #eff6ff;
+            color: var(--accent);
+            border-radius: 14px;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h5 {
+            font-weight: 800;
+        }
+
+        .feature-card p {
+            color: #6b7280;
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           ABOUT
+        ========================= */
+
+        .about-section {
+            background: #f8fafc;
+        }
+
+        .about-box {
+            background: #111827;
+            color: white;
+            border-radius: 25px;
+            padding: 55px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .about-box::after {
+            content: "";
+            width: 350px;
+            height: 350px;
+            position: absolute;
+            right: -150px;
+            top: -150px;
+            background: rgba(37, 99, 235, .35);
+            border-radius: 50%;
+        }
+
+        .about-box p {
+            color: #cbd5e1;
+            line-height: 1.8;
+            position: relative;
+            z-index: 2;
+        }
+
+        .about-box h2 {
+            position: relative;
+            z-index: 2;
+            font-weight: 900;
+        }
+
+        /* =========================
+           NEWSLETTER
+        ========================= */
+
+        .newsletter {
+            background: linear-gradient(135deg, #eff6ff, #f8fafc);
+        }
+
+        .newsletter-box {
+            max-width: 700px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .newsletter-input {
+            height: 52px;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            padding: 0 18px;
+            width: 100%;
+            outline: none;
+        }
+
+        .newsletter-input:focus {
+            border-color: var(--accent);
+        }
+
+        .newsletter-button {
+            height: 52px;
+            border: 0;
+            background: #111827;
+            color: white;
+            border-radius: 12px;
+            padding: 0 25px;
+            font-weight: 700;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #0f172a;
+            color: #fff;
+            padding: 70px 0 25px;
+        }
+
+        .footer-brand {
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin-bottom: 15px;
+        }
+
+        .footer-description {
+            color: #94a3b8;
+            line-height: 1.7;
+            max-width: 350px;
+        }
+
+        footer h6 {
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        footer ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        footer li {
+            margin-bottom: 11px;
+        }
+
+        footer li a {
+            color: #94a3b8;
+            transition: .2s;
+        }
+
+        footer li a:hover {
+            color: #fff;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #334155;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            margin-right: 5px;
+        }
+
+        .social-link:hover {
+            background: #fff;
+            color: #111827;
+        }
+
+        .copyright {
+            border-top: 1px solid #1e293b;
+            margin-top: 50px;
+            padding-top: 25px;
+            color: #64748b;
+            font-size: .85rem;
+        }
+
+        /* =========================
+           CART OFFCANVAS
+        ========================= */
+
+        .cart-item {
+            display: flex;
+            gap: 14px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .cart-item-image {
+            width: 70px;
+            height: 80px;
+            background: #f8fafc;
+            border-radius: 10px;
+            object-fit: contain;
+            padding: 7px;
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-size: .9rem;
+            font-weight: 800;
+        }
+
+        .cart-item-price {
+            font-size: .85rem;
+            color: #6b7280;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .quantity-control button {
+            width: 27px;
+            height: 27px;
+            border: 1px solid #d1d5db;
+            background: white;
+            border-radius: 7px;
+        }
+
+        .remove-cart {
+            border: 0;
+            background: transparent;
+            color: #ef4444;
+        }
+
+        .cart-total {
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            border: 0;
+            background: #111827;
+            color: white;
+            height: 50px;
+            border-radius: 12px;
+            font-weight: 800;
+        }
+
+        .checkout-btn:hover {
+            background: var(--accent);
+        }
+
+        /* =========================
+           PRODUCT MODAL
+        ========================= */
+
+        .modal-product-image {
+            width: 100%;
+            height: 400px;
+            object-fit: contain;
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 30px;
+        }
+
+        .modal-product-title {
+            font-size: 2rem;
+            font-weight: 900;
+        }
+
+        .modal-product-price {
+            font-size: 1.6rem;
+            font-weight: 900;
+            margin: 15px 0;
+        }
+
+        .modal-product-description {
+            color: #6b7280;
+            line-height: 1.8;
+        }
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        .shop-toast {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 9999;
+            background: #111827;
+            color: white;
+            border-radius: 12px;
+            padding: 14px 20px;
+            box-shadow: var(--shadow);
+            transform: translateY(100px);
+            opacity: 0;
+            transition: .3s;
+        }
+
+        .shop-toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 991px) {
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero-phone-area {
+                margin-top: 40px;
+            }
+
+            .hero-title {
+                letter-spacing: -2px;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .section {
+                padding: 65px 0;
+            }
+
+            .hero {
+                min-height: auto;
+                padding: 60px 0;
+            }
+
+            .hero-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-phone {
+                width: 210px;
+                height: 340px;
+            }
+
+            .hero-floating-card.card-one {
+                left: 5px;
+                bottom: 30px;
+            }
+
+            .hero-floating-card.card-two {
+                right: 5px;
+                top: 30px;
+            }
+
+            .product-image-area {
+                height: 270px;
+            }
+
+            .about-box {
+                padding: 35px 25px;
+            }
+
+            .modal-product-image {
+                height: 280px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+     NAVBAR
+========================= -->
+
+    <nav class="navbar navbar-expand-lg main-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="brand-icon">
+                    <i class="bi bi-phone"></i>
+                </span>
+                PhoneShop
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNavbar">
+
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#shop">Shop</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+
+                <button class="cart-button" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas"
+                    aria-label="Shopping cart">
+                    <i class="bi bi-bag"></i>
+                    <span class="cart-badge" id="cartCount">0</span>
+                </button>
+                
+
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- =========================
+     HERO
+========================= -->
+
+    <section class="hero" id="home">
+
+        <div class="container">
+
+            <div class="row align-items-center">
+
+                <div class="col-lg-6">
+
+                    <div class="hero-small-title">
+                        Premium Smartphones
+                    </div>
+
+                    <h1 class="hero-title">
+                        Technology<br>
+                        <span>in your hands.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        Discover the latest smartphones from the world's leading
+                        technology brands. Premium design, powerful performance,
+                        and innovative features.
+                    </p>
+
+                    <div class="d-flex flex-wrap gap-3">
+
+                        <a href="#shop" class="hero-button">
+                            Shop Smartphones
+                            <i class="bi bi-arrow-right ms-2"></i>
+                        </a>
+
+                        <a href="#about" class="hero-secondary-button">
+                            Learn More
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-lg-6">
+
+                    <div class="hero-phone-area">
+
+                        <div class="hero-circle"></div>
+
+                        <!-- Hero image -->
+                        <img src="https://cdsassets.apple.com/live/7WUAS350/images/tech-specs/iphone-17-pro-17-pro-max-hero.png"
+                            alt="iPhone 17 Pro Max" class="hero-phone">
+
+                        <div class="hero-floating-card card-one">
+                            <div class="small text-secondary">
+                                Starting from
+                            </div>
+                            <strong>$799</strong>
+                        </div>
+
+                        <div class="hero-floating-card card-two">
+                            <i class="bi bi-truck text-primary me-1"></i>
+                            <strong>Free Delivery</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+     SHOP
+========================= -->
+
+    <section class="section" id="shop">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <div class="section-label">
+                    Our Collection
+                </div>
+
+                <h2 class="section-title mt-2">
+                    Find your perfect phone
+                </h2>
+
+                <p class="section-description mt-3">
+                    Explore smartphones from the world's most trusted brands.
+                </p>
+
+            </div>
+
+
+            <!-- Toolbar -->
+
+            <div class="shop-toolbar">
+
+                <div class="row g-3 align-items-center">
+
+                    <div class="col-lg-5">
+
+                        <div class="search-box">
+
+                            <i class="bi bi-search"></i>
+
+                            <input type="search" id="searchInput" placeholder="Search smartphones...">
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="col-lg-7">
+
+                        <div class="filter-buttons">
+
+                            <button class="filter-btn active" data-brand="All">
+                                All
+                            </button>
+
+                            <button class="filter-btn" data-brand="Apple">
+                                Apple
+                            </button>
+
+                            <button class="filter-btn" data-brand="Samsung">
+                                Samsung
+                            </button>
+
+                            <button class="filter-btn" data-brand="Google">
+                                Google
+                            </button>
+
+                            <button class="filter-btn" data-brand="Xiaomi">
+                                Xiaomi
+                            </button>
+
+                            <button class="filter-btn" data-brand="OnePlus">
+                                OnePlus
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Product Grid -->
+
+            <div class="row g-4" id="productGrid">
+            </div>
+
+
+            <!-- Empty -->
+
+            <div class="empty-state" id="emptyState">
+
+                <i class="bi bi-phone"></i>
+
+                <h4 class="mt-3 fw-bold">
+                    No phones found
+                </h4>
+
+                <p>
+                    Try another search or select a different brand.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+     FEATURES
+========================= -->
+
+    <section class="section bg-white" id="features">
+
+        <div class="container">
+
+            <div class="text-center mb-5">
+
+                <div class="section-label">
+                    Why PhoneShop
+                </div>
+
+                <h2 class="section-title mt-2">
+                    Shopping made simple
+                </h2>
+
+            </div>
+
+
+            <div class="row g-4">
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+
+                        <h5>Authentic Products</h5>
+
+                        <p>
+                            Every smartphone is sourced from trusted
+                            suppliers and verified before shipping.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-truck"></i>
+                        </div>
+
+                        <h5>Fast Delivery</h5>
+
+                        <p>
+                            Get your new smartphone delivered quickly
+                            and safely to your doorstep.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-credit-card"></i>
+                        </div>
+
+                        <h5>Secure Payment</h5>
+
+                        <p>
+                            Shop confidently with secure and convenient
+                            payment options.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6 col-lg-3">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            <i class="bi bi-headset"></i>
+                        </div>
+
+                        <h5>Expert Support</h5>
+
+                        <p>
+                            Our support team is ready to help you choose
+                            the right smartphone.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+     ABOUT
+========================= -->
+
+    <section class="section about-section" id="about">
+
+        <div class="container">
+
+            <div class="about-box">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-7">
+
+                        <div class="section-label">
+                            About PhoneShop
+                        </div>
+
+                        <h2 class="display-5 mt-2 mb-4">
+                            Your trusted destination
+                            for premium smartphones.
+                        </h2>
+
+                        <p>
+                            PhoneShop brings together the latest smartphones
+                            from leading brands including Apple, Samsung,
+                            Google, Xiaomi and OnePlus.
+                        </p>
+
+                        <p>
+                            We focus on providing authentic products,
+                            competitive prices, excellent customer service,
+                            and a simple online shopping experience.
+                        </p>
+
+                        <a href="#shop" class="btn btn-light rounded-3 px-4 py-3 fw-bold mt-2">
+                            Explore Collection
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+     NEWSLETTER
+========================= -->
+
+    <section class="section newsletter" id="contact">
+
+        <div class="container">
+
+            <div class="newsletter-box">
+
+                <div class="section-label">
+                    Stay Updated
+                </div>
+
+                <h2 class="section-title mt-2">
+                    Get the latest deals
+                </h2>
+
+                <p class="section-description mt-3 mb-4">
+                    Subscribe to receive new smartphone announcements,
+                    special offers, and exclusive deals.
+                </p>
+
+
+                <form id="newsletterForm">
+
+                    <div class="row g-2">
+
+                        <div class="col-md-8">
+
+                            <input type="email" class="newsletter-input" placeholder="Enter your email address"
+                                required>
+
+                        </div>
+
+                        <div class="col-md-4">
+
+                            <button type="submit" class="newsletter-button w-100">
+                                Subscribe
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================
+     FOOTER
+========================= -->
+
+    <footer>
+
+        <div class="container">
+
+            <div class="row g-5">
+
+                <div class="col-lg-5">
+
+                    <div class="footer-brand">
+                        <i class="bi bi-phone me-2"></i>
+                        PhoneShop
+                    </div>
+
+                    <p class="footer-description">
+                        Premium smartphones, trusted service,
+                        and a better way to shop for your next device.
+                    </p>
+
+                    <div class="mt-4">
+
+                        <a href="#" class="social-link">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+
+                        <a href="#" class="social-link">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+
+                        <a href="#" class="social-link">
+                            <i class="bi bi-telegram"></i>
+                        </a>
+
+                        <a href="#" class="social-link">
+                            <i class="bi bi-tiktok"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col-6 col-lg-2">
+
+                    <h6>Shop</h6>
+
+                    <ul>
+                        <li>
+                            <a href="#shop">All Phones</a>
+                        </li>
+
+                        <li>
+                            <a href="#shop">Apple</a>
+                        </li>
+
+                        <li>
+                            <a href="#shop">Samsung</a>
+                        </li>
+
+                        <li>
+                            <a href="#shop">Google</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                <div class="col-6 col-lg-2">
+
+                    <h6>Brands</h6>
+
+                    <ul>
+                        <li>
+                            <a href="#shop">Xiaomi</a>
+                        </li>
+
+                        <li>
+                            <a href="#shop">OnePlus</a>
+                        </li>
+
+                        <li>
+                            <a href="#shop">Apple</a>
+                        </li>
+
+                        <li>
+                            <a href="#shop">Samsung</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+                <div class="col-lg-3">
+
+                    <h6>Contact</h6>
+
+                    <ul>
+
+                        <li>
+                            <a href="#">
+                                <i class="bi bi-geo-alt me-2"></i>
+                                Phnom Penh, Cambodia
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="tel:+85500000000">
+                                <i class="bi bi-telephone me-2"></i>
+                                +855 
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="mailto:hello@phoneshop.com">
+                                <i class="bi bi-envelope me-2"></i>
+                                hello@phoneshop.com
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <div class="copyright text-center">
+                © <span id="currentYear"></span> PhoneShop.
+                All rights reserved.
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+     CART OFFCANVAS
+========================= -->
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+
+        <div class="offcanvas-header">
+
+            <h5 class="offcanvas-title fw-bold">
+                <i class="bi bi-bag me-2"></i>
+                Shopping Cart
+            </h5>
+
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+
+        </div>
+
+
+        <div class="offcanvas-body d-flex flex-column">
+
+            <div id="cartItems" class="flex-grow-1">
+            </div>
+
+
+            <div class="border-top pt-3">
+
+                <div class="d-flex justify-content-between mb-3">
+
+                    <span class="text-secondary">
+                        Total
+                    </span>
+
+                    <span class="cart-total" id="cartTotal">
+                        $0.00
+                    </span>
+
+                </div>
+
+                <button class="checkout-btn" id="checkoutButton">
+                    Checkout
+                    <i class="bi bi-arrow-right ms-2"></i>
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+     PRODUCT MODAL
+========================= -->
+
+    <div class="modal fade" id="productModal" tabindex="-1">
+
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+
+            <div class="modal-content border-0 rounded-4 overflow-hidden">
+
+                <div class="modal-body p-3 p-md-4">
+
+                    <button type="button" class="btn-close float-end" data-bs-dismiss="modal"></button>
+
+                    <div class="row g-4 align-items-center">
+
+                        <div class="col-md-6">
+
+                            <img id="modalProductImage"
+                                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRzPuj2FcvFl_l40BbW1llUAD6KtiFS5ioNZ7GGDAFuHg&s=10"
+                                alt="" class="modal-product-image">
+
+                        </div>
+
+
+                        <div class="col-md-6">
+
+                            <div class="product-brand" id="modalProductBrand"></div>
+
+                            <h2 class="modal-product-title" id="modalProductName"></h2>
+
+                            <div class="modal-product-price" id="modalProductPrice"></div>
+
+                            <p class="modal-product-description" id="modalProductDescription"></p>
+
+                            <button class="add-cart-btn" id="modalAddCart">
+                                <i class="bi bi-bag-plus me-2"></i>
+                                Add to Cart
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Toast -->
+
+    <div class="shop-toast" id="shopToast">
+        <i class="bi bi-check-circle me-2"></i>
+        <span id="toastMessage">
+            Added to cart
+        </span>
+    </div>
+
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <script>
+
+        /* ==========================================
+           PHONE DATABASE
+    
+           IMPORTANT:
+           Each phone has its OWN image path.
+        ========================================== */
+
+        const products = [
+
+            {
+                id: 1,
+                brand: "Apple",
+                name: "iPhone 17 Pro Max",
+                price: 1299,
+                oldPrice: 1399,
+                badge: "New",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXRa936Uxo7gaJPiqQG_gukLl9ugIG2aFPDfNTm5Rep08MmOk5iM5UTK4l&s=10",
+                description: "The ultimate iPhone with powerful performance and a professional camera system."
+            },
+
+            {
+                id: 2,
+                brand: "Apple",
+                name: "iPhone 17 Pro",
+                price: 1099,
+                oldPrice: 1199,
+                badge: "New",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgZ7fuwpRQ7WRjdg8b3RL_e6cN5zddMJ7x-Mf9UcDCMg&s=10",
+                description: "A powerful professional iPhone with advanced performance and premium design."
+            },
+
+            {
+                id: 3,
+                brand: "Apple",
+                name: "iPhone 17",
+                price: 899,
+                oldPrice: 999,
+                badge: "Popular",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE4GxYks8Eydw4Cw-guZSGENoWp_rlTozymnM2Qs6Uhw&s=10",
+                description: "Beautiful design, powerful performance and an advanced camera experience."
+            },
+
+            {
+                id: 4,
+                brand: "Samsung",
+                name: "Galaxy S26 Ultra",
+                price: 1299,
+                oldPrice: 1399,
+                badge: "New",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAggG8HAn8XPZw8JXS6tgBBq-BRq0V5kKCgaEbzdJG7Q&s=10",
+                description: "Samsung's flagship Ultra smartphone with a large display and advanced cameras."
+            },
+
+            {
+                id: 5,
+                brand: "Samsung",
+                name: "Galaxy S26 Plus",
+                price: 999,
+                oldPrice: 1099,
+                badge: "New",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8AQe2z4hfo1vhiqk_uRnUXtfkljUllSAIXWMTbTvnXw&s=10",
+                description: "Premium Samsung performance with a large display and long-lasting battery."
+            },
+
+            {
+                id: 6,
+                brand: "Samsung",
+                name: "Galaxy S26",
+                price: 799,
+                oldPrice: 899,
+                badge: "Popular",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTejH3vIZJoBIt4v_hTMoEm-4oLbbEZEXGX2AM3JxNLDA&s=10",
+                description: "A compact flagship smartphone combining performance and modern design."
+            },
+
+            {
+                id: 7,
+                brand: "Google",
+                name: "Pixel 10 Pro XL",
+                price: 1199,
+                oldPrice: 1299,
+                badge: "New",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdy_m6ro8S00HGIyx6ILhe_wTw4nmkpmHMwcIXxKfY2w&s=10",
+                description: "Google's premium Pixel with intelligent photography and a powerful AI experience."
+            },
+
+            {
+                id: 8,
+                brand: "Google",
+                name: "Pixel 10 Pro",
+                price: 999,
+                oldPrice: 1099,
+                badge: "Popular",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI3YuIYzFI1a73zWgbrUMRGoA3SAuHyr8hb6AWBU56Xg&s=10",
+                description: "A premium Pixel smartphone built around Google's camera and AI technology."
+            },
+
+            {
+                id: 9,
+                brand: "Xiaomi",
+                name: "Xiaomi 17 Ultra",
+                price: 1099,
+                oldPrice: 1199,
+                badge: "New",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVHXxwUpUwlU9OmGXy3jxEgef7_YcoxQlZ0AlQm4YUIQ&s=10",
+                description: "A high-performance Xiaomi flagship featuring a premium camera system."
+            },
+
+            {
+                id: 10,
+                brand: "Xiaomi",
+                name: "Xiaomi 17 Pro",
+                price: 899,
+                oldPrice: 999,
+                badge: "Popular",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSyBREmPr4VSRvNnY5Bq-UqgP3OETBNSDb34EVxBV17Uw&s=10",
+                description: "Premium Xiaomi performance with a modern display and powerful processor."
+            },
+
+            {
+                id: 11,
+                brand: "OnePlus",
+                name: "OnePlus 13",
+                price: 899,
+                oldPrice: 999,
+                badge: "Popular",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdzGkUAANzkmaBoxyaErXJ6Fd2T4ND3txribIkXFHWiQ&s=10",
+                description: "Fast performance, smooth display and premium OnePlus design."
+            },
+
+            {
+                id: 12,
+                brand: "OnePlus",
+                name: "OnePlus 13R",
+                price: 599,
+                oldPrice: 699,
+                badge: "Best Value",
+                image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVVkBKQnLFIgZB3MJ-BeFdrXbEAfZEiaBwNgSBC6EygQ&s=10",
+                description: "Excellent performance and battery life at a competitive price."
+            }
+
+        ];
+
+
+        /* ==========================================
+           VARIABLES
+        ========================================== */
+
+        let currentBrand = "All";
+        let searchTerm = "";
+        let cart = [];
+
+        let selectedProductId = null;
+
+
+        /* ==========================================
+           DOM ELEMENTS
+        ========================================== */
+
+        const productGrid =
+            document.getElementById("productGrid");
+
+        const emptyState =
+            document.getElementById("emptyState");
+
+        const searchInput =
+            document.getElementById("searchInput");
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+        const cartItems =
+            document.getElementById("cartItems");
+
+        const cartTotal =
+            document.getElementById("cartTotal");
+
+        const toast =
+            document.getElementById("shopToast");
+
+        const toastMessage =
+            document.getElementById("toastMessage");
+
+
+        /* ==========================================
+           FORMAT PRICE
+        ========================================== */
+
+        function formatPrice(price) {
+
+            return new Intl.NumberFormat("en-US", {
+                style: "currency",
+                currency: "USD"
+            }).format(price);
+
+        }
+
+
+        /* ==========================================
+           DISPLAY PRODUCTS
+        ========================================== */
+
+        function renderProducts() {
+
+            const filteredProducts = products.filter(product => {
+
+                const matchesBrand =
+                    currentBrand === "All" ||
+                    product.brand === currentBrand;
+
+                const search =
+                    searchTerm.toLowerCase().trim();
+
+                const matchesSearch =
+                    product.name.toLowerCase().includes(search) ||
+                    product.brand.toLowerCase().includes(search);
+
+                return matchesBrand && matchesSearch;
+
+            });
+
+
+            productGrid.innerHTML = "";
+
+
+            if (filteredProducts.length === 0) {
+
+                emptyState.style.display = "block";
+
+                return;
+
+            }
+
+
+            emptyState.style.display = "none";
+
+
+            filteredProducts.forEach(product => {
+
+                const col = document.createElement("div");
+
+                col.className =
+                    "col-12 col-sm-6 col-lg-4 col-xl-3";
+
+
+                col.innerHTML = `
+
+                <div class="product-card">
+
+                    <div
+                        class="product-image-area"
+                        onclick="openProduct(${product.id})"
+                        style="cursor:pointer"
+                    >
+
+                        <span class="product-badge">
+                            ${product.badge}
+                        </span>
+
+                        <button
+                            class="product-wishlist"
+                            onclick="event.stopPropagation(); toggleWishlist(this)"
+                            aria-label="Wishlist"
+                        >
+                            <i class="bi bi-heart"></i>
+                        </button>
+
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                            class="product-image"
+                            onerror="this.src='https://placehold.co/500x600/f8fafc/111827?text=${encodeURIComponent(product.name)}'"
+                        >
+
+                    </div>
+
+
+                    <div class="product-body">
+
+                        <div class="product-brand">
+                            ${product.brand}
+                        </div>
+
+                        <h3 class="product-name">
+                            ${product.name}
+                        </h3>
+
+                        <p class="product-description">
+                            ${product.description}
+                        </p>
+
+                        <div class="product-price">
+
+                            ${formatPrice(product.price)}
+
+                            ${product.oldPrice
+                        ? `
+                                    <span class="product-old-price">
+                                        ${formatPrice(product.oldPrice)}
+                                    </span>
+                                `
+                        : ""
+                    }
+
+                        </div>
+
+
+                        <button
+                            class="add-cart-btn"
+                            onclick="addToCart(${product.id})"
+                        >
+                            <i class="bi bi-bag-plus me-2"></i>
+                            Add to Cart
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+                productGrid.appendChild(col);
+
+            });
+
+        }
+
+
+        /* ==========================================
+           BRAND FILTER
+        ========================================== */
+
+        document
+            .querySelectorAll(".filter-btn")
+            .forEach(button => {
+
+                button.addEventListener("click", function () {
+
+                    document
+                        .querySelectorAll(".filter-btn")
+                        .forEach(btn => {
+                            btn.classList.remove("active");
+                        });
+
+
+                    this.classList.add("active");
+
+
+                    currentBrand =
+                        this.dataset.brand;
+
+
+                    renderProducts();
+
+                });
+
+            });
+
+
+        /* ==========================================
+           SEARCH
+        ========================================== */
+
+        searchInput.addEventListener("input", function () {
+
+            searchTerm = this.value;
+
+            renderProducts();
+
+        });
+
+
+        /* ==========================================
+           ADD TO CART
+        ========================================== */
+
+        function addToCart(productId) {
+
+            const product =
+                products.find(p => p.id === productId);
+
+
+            if (!product) return;
+
+
+            const existingItem =
+                cart.find(item => item.id === productId);
+
+
+            if (existingItem) {
+
+                existingItem.quantity++;
+
+            } else {
+
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+
+            }
+
+
+            updateCart();
+
+            showToast(`${product.name} added to cart`);
+
+        }
+
+
+        /* ==========================================
+           UPDATE CART
+        ========================================== */
+
+        function updateCart() {
+
+            const totalQuantity =
+                cart.reduce(
+                    (total, item) => total + item.quantity,
+                    0
+                );
+
+
+            cartCount.textContent =
+                totalQuantity;
+
+
+            cartItems.innerHTML = "";
+
+
+            if (cart.length === 0) {
+
+                cartItems.innerHTML = `
+
+                <div class="text-center py-5">
+
+                    <i
+                        class="bi bi-bag-x fs-1 text-secondary">
+                    </i>
+
+                    <h6 class="fw-bold mt-3">
+                        Your cart is empty
+                    </h6>
+
+                    <p class="text-secondary small">
+                        Add some smartphones to your cart.
+                    </p>
+
+                </div>
+
+            `;
+
+                cartTotal.textContent =
+                    "$0.00";
+
+                return;
+
+            }
+
+
+            cart.forEach(item => {
+
+                const cartElement =
+                    document.createElement("div");
+
+
+                cartElement.className =
+                    "cart-item";
+
+
+                cartElement.innerHTML = `
+
+                <img
+                    src="${item.image}"
+                    alt="${item.name}"
+                    class="cart-item-image"
+                    onerror="this.src='https://placehold.co/200x250/f8fafc/111827?text=Phone'"
+                >
+
+
+                <div class="cart-item-info">
+
+                    <div class="cart-item-name">
+                        ${item.name}
+                    </div>
+
+                    <div class="cart-item-price">
+                        ${formatPrice(item.price)}
+                    </div>
+
+
+                    <div class="quantity-control">
+
+                        <button
+                            onclick="changeQuantity(${item.id}, -1)"
+                        >
+                            −
+                        </button>
+
+                        <strong>
+                            ${item.quantity}
+                        </strong>
+
+                        <button
+                            onclick="changeQuantity(${item.id}, 1)"
+                        >
+                            +
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="remove-cart"
+                    onclick="removeFromCart(${item.id})"
+                >
+                    <i class="bi bi-trash"></i>
+                </button>
+
+            `;
+
+
+                cartItems.appendChild(cartElement);
+
+            });
+
+
+            const total =
+                cart.reduce(
+                    (sum, item) =>
+                        sum + item.price * item.quantity,
+                    0
+                );
+
+
+            cartTotal.textContent =
+                formatPrice(total);
+
+        }
+
+
+        /* ==========================================
+           CHANGE QUANTITY
+        ========================================== */
+
+        function changeQuantity(productId, amount) {
+
+            const item =
+                cart.find(item => item.id === productId);
+
+
+            if (!item) return;
+
+
+            item.quantity += amount;
+
+
+            if (item.quantity <= 0) {
+
+                cart =
+                    cart.filter(item => item.id !== productId);
+
+            }
+
+
+            updateCart();
+
+        }
+
+
+        /* ==========================================
+           REMOVE CART ITEM
+        ========================================== */
+
+        function removeFromCart(productId) {
+
+            cart =
+                cart.filter(item => item.id !== productId);
+
+            updateCart();
+
+        }
+
+
+        /* ==========================================
+           PRODUCT MODAL
+        ========================================== */
+
+        function openProduct(productId) {
+
+            const product =
+                products.find(p => p.id === productId);
+
+
+            if (!product) return;
+
+
+            selectedProductId =
+                product.id;
+
+
+            document.getElementById(
+                "modalProductImage"
+            ).src = product.image;
+
+
+            document.getElementById(
+                "modalProductImage"
+            ).alt = product.name;
+
+
+            document.getElementById(
+                "modalProductBrand"
+            ).textContent = product.brand;
+
+
+            document.getElementById(
+                "modalProductName"
+            ).textContent = product.name;
+
+
+            document.getElementById(
+                "modalProductPrice"
+            ).textContent = formatPrice(product.price);
+
+
+            document.getElementById(
+                "modalProductDescription"
+            ).textContent = product.description;
+
+
+            const modal =
+                new bootstrap.Modal(
+                    document.getElementById("productModal")
+                );
+
+
+            modal.show();
+
+        }
+
+
+        /* ==========================================
+           MODAL ADD TO CART
+        ========================================== */
+
+        document
+            .getElementById("modalAddCart")
+            .addEventListener("click", function () {
+
+                if (!selectedProductId) return;
+
+                addToCart(selectedProductId);
+
+            });
+
+
+        /* ==========================================
+           WISHLIST
+        ========================================== */
+
+        function toggleWishlist(button) {
+
+            const icon =
+                button.querySelector("i");
+
+
+            if (
+                icon.classList.contains("bi-heart")
+            ) {
+
+                icon.classList.remove("bi-heart");
+
+                icon.classList.add("bi-heart-fill");
+
+                button.style.color = "#ef4444";
+
+            } else {
+
+                icon.classList.remove("bi-heart-fill");
+
+                icon.classList.add("bi-heart");
+
+                button.style.color = "";
+
+            }
+
+        }
+
+
+        /* ==========================================
+           TOAST
+        ========================================== */
+
+        let toastTimer;
+
+
+        function showToast(message) {
+
+            toastMessage.textContent =
+                message;
+
+
+            toast.classList.add("show");
+
+
+            clearTimeout(toastTimer);
+
+
+            toastTimer =
+                setTimeout(() => {
+
+                    toast.classList.remove("show");
+
+                }, 2500);
+
+        }
+
+
+        /* ==========================================
+           NEWSLETTER
+        ========================================== */
+
+        document
+            .getElementById("newsletterForm")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                showToast(
+                    "Thank you for subscribing!"
+                );
+
+                this.reset();
+
+            });
+
+
+        /* ==========================================
+           CHECKOUT
+        ========================================== */
+
+        document
+            .getElementById("checkoutButton")
+            .addEventListener("click", function () {
+
+                if (cart.length === 0) {
+
+                    showToast(
+                        "Your cart is empty"
+                    );
+
+                    return;
+
+                }
+
+
+                showToast(
+                    "Checkout feature coming soon"
+                );
+
+            });
+
+
+        /* ==========================================
+           CURRENT YEAR
+        ========================================== */
+
+        document.getElementById(
+            "currentYear"
+        ).textContent =
+            new Date().getFullYear();
+
+
+        /* ==========================================
+           INITIALIZE
+        ========================================== */
+
+        renderProducts();
+
+        updateCart();
+
+    </script>
+
+</body>
+
+</html>
+
+</html>
